@@ -1,7 +1,16 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Portfolio() {
+  const [showFirstBanner, setShowFirstBanner] = useState(true);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowFirstBanner(prev => !prev);
+    }, 1000); // Switch every 1 second
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <style>
@@ -33,13 +42,12 @@ export default function Portfolio() {
         background: 'linear-gradient(to bottom, #ffb3b2, #FFFFFF)'
       }}>
 
-        {/*logo*/
-          <img
-            src="/logo.png"
-            alt="Logo"
-            className="absolute top-10 left-10 w-60"
-          />
-        }
+        {/*logo*/}
+        <img
+          src="/logo.png"
+          alt="Logo"
+          className="absolute top-10 left-10 w-60"
+        />
 
         {/*Navbar*/}
         <nav className="absolute top-0 right-10 p-12 flex gap-4">
@@ -55,20 +63,23 @@ export default function Portfolio() {
         </nav>
 
         <div className="flex flex-col items-center justify-start min-h-screen px-6 pt-12">
-          <img
-            src="/open.PNG"
-            alt="Welcome banner"
-            className="w-full max-w-8xl mb-8"
-          />
-          <img
-            src="/Jeon.png"
-            alt="Second image"
-            className="absolute slide-in-right"
-            style={{ left: '45%', top: '23%', width: '50%' }}
-          />
-          <h1 className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-6xl font-bold hangyaboly-font mb-4" style={{ color: '#ffb3b2' }}>
-            Welcome to My Website
-          </h1>        </div>
+          <div className="relative w-full max-w-8xl mb-8">
+            <img
+              src={showFirstBanner ? "/open.png" : "/closed.png"}
+              alt="Welcome banner"
+              className="w-full"
+            />
+            <img
+              src="/Jeon.png"
+              alt="Jeon"
+              className="absolute slide-in-right"
+              style={{ left: '45%', top: '23%', width: '50%' }}
+            />
+            <h1 className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-6xl font-bold hangyaboly-font mb-4" style={{ color: '#ffb3b2' }}>
+              Welcome to My Website
+            </h1>
+          </div>
+        </div>
       </div>
     </>
   );
