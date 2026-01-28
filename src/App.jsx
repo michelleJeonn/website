@@ -14,11 +14,11 @@ export default function Portfolio() {
           
           @keyframes slideInRight {
             from {
-              transform: translateX(100%);
+              transform: translate(100%, -100%);
               opacity: 0;
             }
             to {
-              transform: translateX(0);
+              transform: translate(0, 0);
               opacity: 1;
             }
           }
@@ -56,14 +56,14 @@ export default function Portfolio() {
 
         <div className="flex flex-col items-center justify-start min-h-screen px-6 pt-12">
           <img
-            src="/1.png"
+            src="/open.PNG"
             alt="Welcome banner"
             className="w-full max-w-8xl mb-8"
           />
           <img
             src="/Jeon.png"
             alt="Second image"
-            className="absolute top-0 slide-in-right"
+            className="absolute slide-in-right"
             style={{ left: '45%', top: '23%', width: '50%' }}
           />
           <h1 className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-6xl font-bold hangyaboly-font mb-4" style={{ color: '#ffb3b2' }}>
